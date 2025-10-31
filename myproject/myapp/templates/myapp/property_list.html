@@ -16,6 +16,12 @@
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #f8f9fa; }
         tr:nth-child(even) { background-color: #f2f2f2; }
+        select[name="status"] {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +49,8 @@
             <select name="status">
                 <option value="">Все статусы</option>
                 {% for status in statuses %}
-                    <option value="{{ status }}" {% if status == status_filter %}selected{% endif %}>{{ status }}</option>
+                    <option value="{{ status }}" title="{{ status }}" {% if status == status_filter %}selected{% endif %}>
+            {{ status }}
                 {% endfor %}
             </select>
 
